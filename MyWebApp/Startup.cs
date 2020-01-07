@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MyWebApp.Modules;
+using MyWebApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,11 +66,13 @@ namespace MyWebApp
             //});
             app.UseMvc(routes =>
             {
-                routes.MapAreaRoute(
-                    name: "adminArea",
-                    areaName: "Admin",
-                    template: "Admin/{controller=Default}/{action=Index]/{id?}");
-            });          
+                routes.MapAreaRoute(name: "adminArea", areaName: "Admin",
+                    template: "Admin/{controller=Default}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
         }
     }
 }
