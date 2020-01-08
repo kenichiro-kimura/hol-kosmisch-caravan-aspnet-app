@@ -15,6 +15,7 @@ namespace MyWebApp.Controllers
         public IActionResult Index()
         {
             string message = cache.GetString("message");
+            ViewBag.Message = message;
             return View(new MyForm {Message = message });
         }
 
