@@ -351,3 +351,11 @@ MigrationBackup/
 
 # temp directory (profile images)
 temp/
+/MyWebApp/_aws-windows-deployment-manifest.json
+/MyWebApp/site.zip
+/MyWebApp/site/Newtonsoft.Json.dll
+/MyWebApp/site/MyWebApp.Views.dll
+/MyWebApp/site/MyWebApp.dll
+/MyWebApp/site
+/MyWebApp/aws-windows-deployment-manifest.zip
+/MyWebApp/aws-beanstalk-tools-defaults.json
