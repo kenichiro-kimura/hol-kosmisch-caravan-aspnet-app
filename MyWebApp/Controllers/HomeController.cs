@@ -1,22 +1,31 @@
-﻿using MyWebApp.Models;
-using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
+using MyWebApp.Models;
 
 namespace MyWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly IDistributedCache cache;
+
+        public HomeController(IDistributedCache cache)
         {
-            ViewBag.Message = Session["message"]?.ToString() ?? "";
+            this.cache = cache;
+        }
+
+        public IActionResult Index()
+        {
+            ViewBag.Message = cache.GetString("message");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(MyForm item)
+        public IActionResult Index(MyForm item)
         {
             if (!string.IsNullOrWhiteSpace(item?.Message))
             {
-                Session["message"] = item.Message;
+                cache.SetString("message", item.Message);
             }
             return RedirectToAction("Index");
         }
