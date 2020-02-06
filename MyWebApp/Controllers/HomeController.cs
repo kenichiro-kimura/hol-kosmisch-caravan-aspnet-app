@@ -20,5 +20,25 @@ namespace MyWebApp.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        private static async Task<string> HttpAccessAsync()
+        {
+            //string url = "https://192.168.1.1";
+
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    var result = await client.GetStringAsync("192.168.1.1");
+                    // Webアクセス(GET)
+                    return result;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
     }
 }
