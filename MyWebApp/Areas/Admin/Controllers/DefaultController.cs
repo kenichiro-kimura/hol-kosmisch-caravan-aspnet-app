@@ -9,5 +9,25 @@ namespace MyWebApp.Areas.Admin.Controllers
         {
             return View();
         }
+
+        private static async Task<string> HttpAccessAsync()
+        {
+            //string url = "https://192.168.1.1";
+
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    var result = await client.GetStringAsync("http://192.168.1.1/hogehoge");
+                    // Webアクセス(GET)
+                    return result;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
     }
 }
