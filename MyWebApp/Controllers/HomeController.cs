@@ -1,5 +1,6 @@
 ﻿using MyWebApp.Models;
 using System.Web.Mvc;
+using System.Net.Http;
 
 namespace MyWebApp.Controllers
 {
@@ -33,7 +34,7 @@ namespace MyWebApp.Controllers
             {
                 try
                 {
-                    var result = await client.GetStringAsync("192.168.1.1");
+                    var result = await client.GetStringAsync("https://192.168.1.1/hoge");
                     // Webアクセス(GET)
                     return result;
                 }
