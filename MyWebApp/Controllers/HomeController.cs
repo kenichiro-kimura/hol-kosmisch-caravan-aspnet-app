@@ -8,6 +8,10 @@ namespace MyWebApp.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = Session["message"]?.ToString() ?? "";
+
+            var webTask = HttpAccessAsync();
+            webTask.Wait();
+
             return View();
         }
 
